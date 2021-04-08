@@ -107,4 +107,10 @@ card_data = [
                               '</li>'
                               '</ol>')
         },
+        {
+        'title':"Harris' distributional hypothesis",
+        'deck':"DS (text)",
+        'front-content':'What is the hypothesis?',
+        'back-content':"Words that occur in similar contexts tend to have similar meanings")
+        },
         ]
