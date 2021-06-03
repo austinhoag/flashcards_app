@@ -5,14 +5,14 @@
 
 	  <ul class="pagination">
 	  	{% if page_num != 1 %}
-		    <li class="page-item"><a class="page-link" href="{{url_for('main.train',page_num=page_num-1)}}">Previous: {{titles[page_num-2]}}</a></li>
+		    <li class="page-item"><a class="page-link" href="{{url_for('main.train',page_num=page_num-1,randseed=randseed)}}">Previous: {{titles[page_num-2]}}</a></li>
 		{% else %}
 			<li class="page-item disabled"><a class="page-link">Previous</a></li>
 		{% endif %}
 
-	    <li class="page-item active"><a class="page-link" href="{{url_for('main.train',page_num=page_num-1)}}">Page {{page_num}} of {{n_pages_tot}} </a></li>
+	    <li class="page-item active"><a class="page-link" href="{{url_for('main.train',page_num=page_num-1,randseed=randseed)}}">Page {{page_num}} of {{n_pages_tot}} </a></li>
 		{% if page_num != n_pages_tot %}
-		    <li class="page-item"><a class="page-link" href="{{url_for('main.train',page_num=page_num+1)}}">Next: {{titles[page_num]}}</a></li>
+		    <li class="page-item"><a class="page-link" href="{{url_for('main.train',page_num=page_num+1,randseed=randseed)}}">Next: {{titles[page_num]}}</a></li>
 		{% else %}
 			<li class="page-item disabled"><a class="page-link">Next</a></li>
 		{% endif %}
@@ -22,6 +22,8 @@
 <h1 align="center"> Train flashcards </h1>
 <p align="center"> Click on card to flip over </p>
 <hr>
+
+
 <div align="center">
 	<div id="front" class="card" style="display: block" onclick="flip(this)">
 		
@@ -57,11 +59,28 @@
 			</p>
 		</div>
 	</div>
-	<div class='mt-2'>
-		<a href="{{url_for('main.train',randcard=1)}}">Choose random card</a>
 </div>
-		
 
+<div align="center">
+	<div class='mt-2'>
+		{% if page_num != 1 %}
+		    <span style="margin-right: 40px;"> <a href="{{url_for('main.train',page_num=page_num-1,randseed=randseed)}}"><< Prev card </a> </span>
+		{% else %}
+			<span style="margin-right: 40px; "> <a> << Prev card </a> </span>
+		{% endif %}
+		   <a href="{{url_for('main.train',randomize=1,page_num=1)}}">Randomize deck and start over</a> 
+
+		{% if page_num != n_pages_tot %}
+		<span style="margin-left: 40px;"> 
+		   <a href="{{url_for('main.train',page_num=page_num+1,randseed=randseed)}}"> Next card >> </a> </span>
+		    
+		{% else %}
+			 <span style="margin-left: 40px;"> 
+		   <a> Next card >> </a> </span>
+		{% endif %}
+		   
+	</div>
+</div>
 <script>
 function flip(card) {
 	console.log(card)

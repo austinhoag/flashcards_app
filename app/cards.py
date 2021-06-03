@@ -109,8 +109,97 @@ card_data = [
         },
         {
         'title':"Harris' distributional hypothesis",
-        'deck':"DS (text)",
+        'deck':"DS",
         'front-content':'What is the hypothesis?',
-        'back-content':"Words that occur in similar contexts tend to have similar meanings")
+        'back-content':"Words that occur in similar contexts tend to have similar meanings"
         },
-        ]
+        {
+        'title':"Ridge Regression",
+        'deck':"DS",
+        'front-content':Markup('<ol><li>What is it?</li>'
+                              '<li>What kind of models can it be used for?</li>'
+                              '<li>Mathematical formula (the bias term)</li>'
+                              '<li>Why is it used?</li>'
+                              '</ol>'),
+        'back-content':Markup('<ol><li>A regularization technique where a bias is added to minimize variance. </li>'
+                              '<li>Linear regression, logistic regression</li>'
+                              '<li>For linear regression: add the following term to the cost function: $$\lambda m^2$$ where lambda is a hyperparameter determined via cross validation and m is the slope. In general, ridge regression penalty contains all parameters except the y-intercept.</li>'
+                              '<li>Used to desensitize model to training data bc it penalizes large slopes (think "y/x"). It can also allow you to fit models with more parameters than data points. See: <a href="https://www.youtube.com/watch?v=Q81RR3yKn30">YouTube</a></li>'
+                              '</ol>'),
+        },
+        {
+        'title':"Precision, Recall and F1 Score",
+        'deck':"DS",
+        'front-content':"Definitions of all three in terms of TP, FP, TN, FN. Also, why is F1 defined that way?",
+        'back-content':Markup('<ol><li>Precision: $$ {TP \over {TP + FP} }$$ </li>'
+                              '<li>Recall: $$ {TP \over {TP + FN} }$$ </li>'
+                              '<li>F1: Harmonic mean of precision and recall: $$ 2*{P*R \over {P + R} }$$.</li>'
+                              '<li>F1 is harmonic mean of the two to punish extreme values of either P or R.</li>'
+                              '</ol>'),
+        },
+        {
+        'title':"Naive Bayes",
+        'deck':"DS",
+        'front-content':Markup("<ul><li>Why is it called 'naive?'</li>"
+                               "<li> Mathematical formula for posterior odds </li>"
+                               "<li> What model distribution is commonly used for text classification? </li>"
+                               "</ul> </li>"
+                               ),
+        'back-content':Markup('<ul><li>Naive because you have to assume the model distribution -- e.g. that data are drawn from Gaussian distributions </li>'
+                              '<li>Let L1 = label 1, L2 = label 2, '
+                              '$$ {P(L1|\mathrm{features}) \over P(L2|\mathrm{features})} = {P(\mathrm{features}|L1)P(L1) \over P(\mathrm{features}|L2)P(L2)}$$ </li>'
+                              '<li>Multinomial distribution is often used for text classification because '
+                              'you have many words with difference frequencies (counts) and you want to classify documents based on those counts</li>'
+
+                              '</ul>'),
+        },
+        {
+        'title':'Type I and II errors',
+        'deck':"DS",
+        'front-content':"What are they?",
+        'back-content':Markup('<ul><li>Type I error = False positive</li>'
+                              '<li>Type II error = False negative</li>'
+                              '</ul>')
+        },
+
+        {
+        'title':'A/B testing (multiple tests case)',
+        'deck':"DS",
+        'front-content':Markup('Sample question: <ul><li>10 tests are running with different landing page</li>'
+                               '<li>1 case won and the p-value is just under 0.05 </li>'
+                               '<li>Should you make the change?</li>'
+                               '</ul'),
+        'back-content':Markup('No because: $$P(\mathrm{no\,false\,positive}) = (0.95)^{\mathrm{N_{tests}}} = 0.95^{10} = 0.6$$  '
+                'so $$ P(\mathrm{false\,positive}) = 1-0.6 = 0.4$$'
+                'Instead some methods are to use the <b>Bonferroni</b> correction (conservative, less power) which is: $$p < {0.05 \over \mathrm{N_{tests}}} = {0.05 \over 10} = 0.005$$'
+                'There is also the less conservative <b>Benjamini-Hochberg</b> method (less conservative, more power). The method is on another flashcard'
+                )
+        },
+        {
+        'title':'A/B testing (single test case)',
+        'deck':"DS",
+        'front-content':Markup('<ul><li>What is it in its simplest form?</li>'
+                               '<li>Example</li>'
+                               '<li>How to determine sample size?</li>'
+                               '<li>Rule of thumb for determining sample size?</li>'
+                               '</ul'),
+        'back-content':Markup('<ul><li>Test treatment group B against control group A</li>'
+                              '<li>Tech company tests new feature against existing feature on subset of users </li>'
+                              '<li>To determine sample size you need: <ol><li>Type II error or power</li><li> significance</li><li> Minimum detectable effect</li></ol></li>'
+                              '<li>$$\mathrm{Sample size} \simeq {16 \sigma^2 \over \delta^2} $$ where $$\sigma^2$$ is sample variance and $$\delta$$ is minimum difference you want to see between groups.  </li>'
+                              '</ul>')
+        },
+        {
+        'title':'Benjamini-Hochberg method',
+        'deck':"DS",
+        'front-content':'What is the method used for and what are the steps for performing it?',
+        'back-content':Markup('A less conservative method (i.e. retains more power) method than Bonferroni for adjusting p-values in multiple comparisons'
+                '<ol>'
+                '<li> Sort p-values </li>'
+                '<li> Assign ranks to them </li>'
+                '<li> The largest FDR adjusted p-value is the same as the largest p-value </li>'
+                '<li> The next largest FDR adjusted p-value is </br>min(previously adjusted p-value, current p-value * (# of p-values / current p-value rank)) </li>'
+                '</ol>This is a REALLY helpful explanation: <a href="https://www.youtube.com/watch?v=K8LQSvtjcEo">False Discovery Rates, FDR, clearly explained (StatQuest)</a>'
+                )
+        },
+]
