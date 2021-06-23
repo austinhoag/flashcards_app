@@ -14,16 +14,30 @@ card_data = [
         {
         'title':'How to tackle overfitting',
         'deck':"DS",
-        'front-content':'Four strategies',
+        'front-content':'List at least four strategies strategies',
         'back-content':Markup('<ol><li>Reduce complexity of model</li>'
-                              '<li>Add dropout layer(s)</li>'
+                              '<li>Add dropout layer(s)/regularization</li>'
+                              '<li>cross-validated evaluation</li>'
                               '<li>Use more data for training/validation</li>'
                               '<li>Use data augmentation for training</li>'
+                              '<li>Ensemble learning</li>'
+                              '</ol>')
+        },
+        {
+        'title':'Basic parts of Deep Learning',
+        'deck':"DS",
+        'front-content':'Six parts',
+        'back-content':Markup('<ol><li>Data</li>'
+                              '<li>Loss function (e.g. cross entropy)</li>'
+                              '<li>Optimization algorithm (e.g. Adam)</li>'
+                              '<li>Network architecture (e.g. Dense layers)</li>'
+                              '<li>Test data</li>'
+                              '<li>Evaluation metric (e.g. Accuracy)</li>'
                               '</ol>')
         },
         {
         'title':'PCA',
-        'deck':"DS",
+        'deck':"Stats",
         'front-content':Markup('<ol><li>What it does?</li>'
                               '<li>When to use it?</li>'
                               '<li>How to calculate PCs?</li>'
@@ -57,7 +71,7 @@ card_data = [
         },
         {
         'title':'Binomial Distribution',
-        'deck':"DS",
+        'deck':"Stats",
         'front-content':Markup('<ol><li>Definition (in words)</li>'
                               '<li>Mathematical formula</li>'
                               '<li>assumptions</li>'
@@ -71,7 +85,7 @@ card_data = [
         },
         {
         'title':'Kullback Leibler (KL) Divergence',
-        'deck':"DS",
+        'deck':"Stats",
         'front-content':Markup('<ol><li>Mathematical formula</li>'
                               '<li>Interpretation in Machine Learning</li>'
                               '<li>Also known as what?</li>'
@@ -115,7 +129,7 @@ card_data = [
         },
         {
         'title':"Ridge Regression",
-        'deck':"DS",
+        'deck':"Stats",
         'front-content':Markup('<ol><li>What is it?</li>'
                               '<li>What kind of models can it be used for?</li>'
                               '<li>Mathematical formula (the bias term)</li>'
@@ -155,7 +169,7 @@ card_data = [
         },
         {
         'title':'Type I and II errors',
-        'deck':"DS",
+        'deck':"Stats",
         'front-content':"What are they?",
         'back-content':Markup('<ul><li>Type I error = False positive</li>'
                               '<li>Type II error = False negative</li>'
@@ -164,7 +178,7 @@ card_data = [
 
         {
         'title':'A/B testing (multiple tests case)',
-        'deck':"DS",
+        'deck':"Stats",
         'front-content':Markup('Sample question: <ul><li>10 tests are running with different landing page</li>'
                                '<li>1 case won and the p-value is just under 0.05 </li>'
                                '<li>Should you make the change?</li>'
@@ -177,7 +191,7 @@ card_data = [
         },
         {
         'title':'A/B testing (single test case)',
-        'deck':"DS",
+        'deck':"Stats",
         'front-content':Markup('<ul><li>What is it in its simplest form?</li>'
                                '<li>Example</li>'
                                '<li>How to determine sample size?</li>'
@@ -191,7 +205,7 @@ card_data = [
         },
         {
         'title':'Benjamini-Hochberg method',
-        'deck':"DS",
+        'deck':"Stats",
         'front-content':'What is the method used for and what are the steps for performing it?',
         'back-content':Markup('A less conservative method (i.e. retains more power) method than Bonferroni for adjusting p-values in multiple comparisons'
                 '<ol>'
@@ -201,5 +215,63 @@ card_data = [
                 '<li> The next largest FDR adjusted p-value is </br>min(previously adjusted p-value, current p-value * (# of p-values / current p-value rank)) </li>'
                 '</ol>This is a REALLY helpful explanation: <a href="https://www.youtube.com/watch?v=K8LQSvtjcEo">False Discovery Rates, FDR, clearly explained (StatQuest)</a>'
                 )
+        },
+        {
+        'title':'AdaBoost Algorithm',
+        'deck':"DS",
+        'front-content':Markup('<ul><li>Why is it used?</li><li>How to implement?</li> '),
+        'back-content':Markup('Adaboost helps you combine multiple weak classifiers (e.g. single split decision trees) into a single strong classifier'
+                '<ol>'
+                '<li> Assign every observation an initial weight value: $$w_i = {1 \over n}$$ </li>'
+                '<li> Train a weak model (most often a decision tree) </li>'
+                '<li> For each observation: <ul><li>If predicted incorrectly, weight is increased</li><li>If predicted correctly, weight is decreased </li></ul></li>'
+                '<li> Train a new weak model where observations with greater weights are given more priority </li>'
+                '<li> Repeat steps 3 and 4 until observations perfectly predicted or a preset number of trees are trained. </li>'
+                '</ol>This is a REALLY helpful explanation: <a href="https://www.youtube.com/watch?v=LsK-xG1cLYA">AdaBoost, Clearly Explained (StatQuest)</a>'
+                )
+        },
+        {
+        'title':'Gini impurity',
+        'deck':"DS",
+        'front-content':Markup('<ul><li>What is it?</li><li>How to calculate?</li> '),
+        'back-content':Markup('It is a measure for determining the splits in a decision tree. Impurity refers to the fact that trees do not perfectly split the data into two classes.'
+                '<ol>'
+                '<li> Calculate the impurity for each leaf node: $$ 1 - P(\mathrm{yes})^2 - P(\mathrm{no})^2$$ </li>'
+                '<li> Calculate the weighted average of each impurity based on number of observations in each leaf node </li>'
+                '</ol>This is a REALLY helpful explanation: <a href="youtube.com/watch?v=7VeUPuFGJHk&t=430s">Decision Trees (StatQuest)</a>'
+                )
+        },
+        {
+        'title':'Regression trees',
+        'deck':"DS",
+        'front-content':Markup('<ul><li>What are they?</li><li>How are they different from decision trees?</li> '),
+        'back-content':Markup('They are an alternative to linear regression that allows you to fit non-linear relationships in the data.'
+                '<ul>'
+                '<li> In regression trees, the nodes are numerical values, instead of True or False like in decision trees  </li>'
+                '<li> To build one, split the data by picking thresholds that minimize the sum of the squared residuals </li>'
+                '</ul>This is a REALLY helpful explanation: <a href="https://www.youtube.com/watch?v=g9c66TUylZ4">Regression Trees (StatQuest)</a>'
+                )
+        },
+        {
+        'title':'AIC',
+        'deck':"Stats",
+        'front-content':Markup('<ul><li>What is it and what is it used for?</li><li>How to calculate?</li><li>Assumptions</li> '),
+        'back-content':Markup('It is a relative statistical estimator used for model comparison'
+                '<ul>'
+                '<li> Often used when you do not want to do traditional train/val/test split - e.g. in time series where recent data is most valuable </li>'
+                '<li> Can think of it as evaluating a model\'s fit to the data plus a pentality for model complexity</li>'
+                '<li> $$ \mathrm{AIC} = -2\ln{L} + 2k, $$ where L is likelihood (often just residual sum of squares) and k is number of params.</li>'
+                '<li> Assumes infinite sample size. For smaller sample sizes use <a href="https://www.youtube.com/watch?v=7XAHjm6Vy5k&t=1045s">AICc</a></li>'
+                '</ul>Helpful explanation: <a href="https://towardsdatascience.com/introduction-to-aic-akaike-information-criterion-9c9ba1c96ced">Towards Data Science</a>'
+                )
+        },
+        {
+        'title':'R squared (coefficient of determination)',
+        'deck':"Stats",
+        'front-content':'What is meant by R squared? Definition (in words)? Mathematical definition?',
+        'back-content':Markup('<ol><li>It is a statistical measure of how close the data are to a fitted regression line. </li>'
+                              '<li>It is the percentage of the response variable variation that is explained by a linear model. </li>'
+                              '<li>$$R^2 = 1 - {\sum_i{(y_i - \hat{y_i})^2} \over \sum_i{(y_i - \overline{y})^2} },$$ where y_i is data, y_i hat is predicted, y bar is mean data </li>'
+                              '</ol>')
         },
 ]
