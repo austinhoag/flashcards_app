@@ -274,4 +274,13 @@ card_data = [
                               '<li>$$R^2 = 1 - {\sum_i{(y_i - \hat{y_i})^2} \over \sum_i{(y_i - \overline{y})^2} },$$ where y_i is data, y_i hat is predicted, y bar is mean data </li>'
                               '</ol>')
         },
+        {
+        'title':'Cross entropy',
+        'deck':'DS',
+        'front-content':'Defintion (words and math), when is it used? Why is it preferred over sum of squared residuals?',
+        'back-content':Markup('<ol><li>It is a loss function used for multi-class classification problems when your class outputs are probabilities. </li>'
+                              '<li>$$ S_c = - \sum_{c=1}^{M}{\mathrm{Observed}_c \\times \log{(\mathrm{Predicted}_c})}, $$ where c runs over the different classes (of where there are a total of M) </li>'
+                              '<li>The log function has a steeper shape near 0 so better derivative between 0 and 1 for back prop than sum of squared residuals.'
+                              'Helpful explanation: <a href="https://www.youtube.com/watch?v=6ArSys5qHAU">Cross Entropy (StatQuest)</a>')
+        }
 ]
