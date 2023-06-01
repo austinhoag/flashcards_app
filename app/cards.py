@@ -14,7 +14,7 @@ card_data = [
         {
         'title':'How to tackle overfitting',
         'deck':"DS",
-        'front-content':'List at least four strategies strategies',
+        'front-content':'List at least four strategies',
         'back-content':Markup('<ol><li>Reduce complexity of model</li>'
                               '<li>Add dropout layer(s)/regularization</li>'
                               '<li>cross-validated evaluation</li>'
@@ -117,7 +117,7 @@ card_data = [
                               '</ol>'),
         'back-content':Markup('<ol><li>$$ \sigma(x) = {e^{x_i} \over \sum_{j=1}^{K} e^{x_j}} $$</li>'
                               '<li> Typically used in dense (aka fully connected layers)</li>'
-                              '<li> Used in multi-class classification problems where you want each output node to predict a number between 0 and 1</li>'
+                              '<li> Used in multi-class classification problems where you want each output node to predict a number between 0 and 1 (probability)</li>'
                               '</li>'
                               '</ol>')
         },
@@ -278,9 +278,18 @@ card_data = [
         'title':'Cross entropy',
         'deck':'DS',
         'front-content':'Defintion (words and math), when is it used? Why is it preferred over sum of squared residuals?',
-        'back-content':Markup('<ol><li>It is a loss function used for multi-class classification problems when your class outputs are probabilities. </li>'
+        'back-content':Markup('<ol><li>It is a loss function used for multi-class classification problems when your class outputs are probabilities. It generalizes log loss. </li>'
                               '<li>$$ S_c = - \sum_{c=1}^{M}{\mathrm{Observed}_c \\times \log{(\mathrm{Predicted}_c})}, $$ where c runs over the different classes (of where there are a total of M) </li>'
                               '<li>The log function has a steeper shape near 0 so better derivative between 0 and 1 for back prop than sum of squared residuals.'
                               'Helpful explanation: <a href="https://www.youtube.com/watch?v=6ArSys5qHAU">Cross Entropy (StatQuest)</a>')
+        },
+        {
+        'title':'Ensemble methods (bagging, boosting, and stacking)',
+        'deck':'DS',
+        'front-content':'What are they, and when are they used? How do they differ from each other?',
+        'back-content':Markup('<ol><li>Bagging stands for "bootstrap aggregation" and involves resampling the data and combines multiple (often) homogeneous classifiers learned in parallel following some averaging process. </li>'
+                              '<li> Boosting does not resample the data and combines multiple (often) homogeneous classifiers learned <i>sequentially</i> following some known stragety. </li>'
+                              '<li> Stacking does not resample the data and combines mutliple heterogeneous classifiers by training a meta-model to output a prediction based on the different weak models predictions </li>'
+                              '<li> Bagging can reduce variance but not bias, boosting and stacking can reduce both. </li>')
         }
 ]
