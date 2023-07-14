@@ -27,3 +27,16 @@ def train():
     return render_template('train.html',page_num=page_num,
         randseed=randseed,
         n_pages_tot=n_pages_tot,card_dict=card_dict,titles=titles)
+
+
+@main.route("/listcards",methods=["GET"]) 
+def listcards(): 
+    from app.cards import card_data
+    titles = [x['title'] for x in card_data]
+    return render_template('listcards.html',titles=titles)
+
+@main.route("/singlecard/<title>",methods=["GET"]) 
+def singlecard(title): 
+    from app.cards import card_data
+    card_dict = [x for x in card_data if x['title'] == title][0]
+    return render_template('singlecard.html',card_dict=card_dict)

@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+
+<h1 align="center"> List of all flashcards </h1>
+<p align="center"> Click on a link to show a card </p>
+<hr>
+
+<ul>
+	{% for title in titles %}
+    <li><a href="{{url_for('main.singlecard',title=title)}}">{{title}}</a></li>
+{% endfor %}
+	
+</ul>
+
+{% endblock content %}

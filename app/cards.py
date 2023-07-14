@@ -291,5 +291,13 @@ card_data = [
                               '<li> Boosting does not resample the data and combines multiple (often) homogeneous classifiers learned <i>sequentially</i> following some known stragety. </li>'
                               '<li> Stacking does not resample the data and combines mutliple heterogeneous classifiers by training a meta-model to output a prediction based on the different weak models predictions </li>'
                               '<li> Bagging can reduce variance but not bias, boosting and stacking can reduce both. </li>')
+        },
+        {
+        'title':'LLM architectures',
+        'deck':'DS',
+        'front-content':'What is the difference between encoder-only, encoder-decoder, and decoder-only LLMs?\nWhen are each used? Give examples of each (e.g. GPT)',
+        'back-content':Markup('<ol><li>Encoder-only models encode the input into a fixed length sequence. Can be used for text classification, sentiment analysis, named entity recognition. Can be used for seq2seq tasks but output will be same size as input without mod. Example: BERT. </li>'
+                              '<li> Encoder-decoder models are used for seq2seq tasks such as translation, text summarization, question answering. Output is a list of tokens of arbitrary size. Example: the original transformer, Google T5.  </li>'
+                              '<li> Decoder-only models just predict the next token in the sequence given an input. Does not have an encoder to summarize the input information. Used for: text completion, text generation, translation, question answering, generating image captions. Example: GPT family of models.</li>')
         }
 ]

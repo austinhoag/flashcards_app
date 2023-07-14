@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<nav aria-label="Page navigation example">
+
+<h1 align="center"> Train flashcards </h1>
+<p align="center"> Click on card to flip over </p>
+<hr>
+
+
+<div align="center">
+	<div id="front" class="card" style="display: block" onclick="flip(this)">
+		
+		<div align="center" class="card-header" >
+			{{card_dict['title']}}
+		</div>
+		<div class="card-body">
+			<p class="card-text">{{card_dict['front-content']}}</p>
+		</div>
+		<div class="card-footer" >
+			<p style="text-align:left;">
+			    Deck: {{card_dict['deck']}}
+			    <span style="float:right;">
+			        <b>Front</b> Back
+			    </span>
+			</p>
+		</div>
+	</div>
+
+	<div id="back" class="card" style="display: none" onclick="flip(this)">
+		<div align="center" class="card-header" >
+			{{card_dict['title']}}
+		</div>
+		<div class="card-body">
+			<p class="card-text">{{card_dict['back-content']}}</p>
+		</div>
+		<div class="card-footer" >
+			<p style="text-align:left;">
+			    Deck: {{card_dict['deck']}}
+			    <span style="float:right;">
+			        Front <b>Back</b>
+			    </span>
+			</p>
+		</div>
+	</div>
+</div>
+
+<div class='mt-2' align="center">
+	
+   <a  href="{{url_for('main.listcards')}}">Back to list of all cards</a> 
+
+<script>
+function flip(card) {
+	console.log(card)
+	var card_id = card.id
+	card.style.display = "none"
+	if (card_id == "front") {
+		var otherside_id = "back"
+	} 
+	else {
+		var otherside_id = "front"
+	}
+	var card_otherside = document.getElementById(otherside_id);
+	card_otherside.style.display = "block"
+}
+</script>
+{% endblock content %}
